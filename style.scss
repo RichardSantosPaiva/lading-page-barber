@@ -1,0 +1,84 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: 0;
+    outline: 0;
+}
+
+//  fizemos esse ret, mas nd acontece pq
+// pq precisamos chamar o nosso css, mas ele não existe
+//só existe o saas. Ent vamos usar a extensão compiler.
+
+// tem uma opção chamada watch Saas, ao clicar
+//vai aparecer o um cmd gigantesco dizendo que está
+// olhando esse css, qnd ele está olhando ele converteu
+//agora que ele está olhando ele gera automáticamente o 
+//o nosso arquivo style.css, quando eu lhar dentro
+//do nosso arquivo nd mais é do que o nosso css convertido
+
+//Como por enquanto estamos usando o SAAS, que é a mesma coisa
+//q o css, os dois n tem nd de diferença, ele já converteu, gerou o arquivo
+//style.css com td que colocamos lá dentro do SAAS, e é esse arquivo, que vamos
+// imporar la dentro do html. Deixe o wathing lá em baixo e com o cadeado
+
+// cores
+
+@import "partials/colors";
+//
+/* Importamos um arquivo de SAAS(colors),  importamos dentro do nosso style.scss,
+ essa é uma funcionalidade que o css puro não tem, que temos dentro de SAAS
+. Agora que importei eu posso usar, quero que o background landing page seja dessa cor
+primary, que a minha váriavel chamando ela no background-color
+
+ */
+@import "partials/header";
+@import "partials/layout";
+
+
+// primeira coisa que precisamos fazer é controlar o nosso bg-home, pq n tema  img de fundo
+// e td vez que aumento o layout não tem um tamanho máximo, eu quero que ele tenha um tamanho
+//máximo de 1.440 ou tamanho que caso ele passe disso ele apenas alinhe o conteudo dentro.
+// por enquanto ele vai continuar seguindo grudado independente do tamanho de tela do usuario
+// ao inspesionar e minimizar, quando eu mexer vai mostrar o tmn
+
+// colocando a fonte 
+body {
+
+    font-family: 'sora', sans-serif;
+    width: 100%;
+    height: 100vh;
+    // 100vh sgnifica qué a altura inteira do nosso documento que ele consegue pegar do view higth
+    position: relative;
+
+    background-color: $primary-normal;
+}
+
+button {
+    font-family: 'sora', sans-serif;
+    cursor: pointer;
+}
+
+svg {
+    width: 100%;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+/*Ao olhar no figma dentro dela temos as cores que vamos usar, e algumas cores vamos repetir
+no background, no fundo do sobre que é a mesma coisa. A gente vai ter que ficar toda hora olhando 
+, e colando o mesmo hexadecimal, não faz sentido criar uma váriavel pra isso? Então vamos
+cadastar as cores do nosso projeto no nosso arquivo de estilo, aqui já começa ter uma difença no 
+nosso saas, ao inves de criar um arquivo saas grande, vamos repatir ele em algumas partes que vamos
+separar, como um componente. Uma parte do css só header, uma para o body, outra para a cor.
+
+Não esqueca de deixar o cmd do watch scss rodando. Vou criar um nova pasta chamada chamada de partials
+criar um arquivo chamado _colors.scss, um css só pra registrar as cores do projeot em váriaveis
+
+
+*/

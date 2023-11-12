@@ -1,0 +1,354 @@
+
+/*
+criado esse arquivo depois de terminar o header
+
+precisamos controlar o bg-homer, pois não temos a 
+imagem de fundo, e toda vez que vamos aumentando, o nosso 
+layout não tem um tamanho máximo. E o caso do layout no
+figma, quero que sempre tenha  um tamanho máximo de 1440px
+ou um tamanho que caso passe disso, ele só vai alinhar o conteúdo
+dentro
+
+Por enquanto ele ta seguindo grudado, na esquerda e na direita,
+independente do tamanho de tela do usuario.
+
+ao abrir o inspecionar, com ele aberto e minimizo, ai quando eu
+mexer posso ver o tamanho da página. Qnd eu tiver 1440px, posso
+alinhar, quando passar disso eu quero que fique alinhado o conteudo
+ e não que ele fique grudado na esquerda e na direta (menu e botão).
+ Como fazer isso?
+
+ Pra isso, criamos um .container, que vai ser um container apenas
+ de alinhamento aqui dentro no nosso layout. Vou dizer que no máximo
+ a nossa largura vai ter 1140 pixel de largura e que ele vai ter uma
+ margin 0 emcima e baixo e auto nas laterais. Pra sempre ter uma 
+ alinhamento centralizado
+
+ lembrando: no nosso nav, no index.html. Que tem toda uma navegação 
+ dentro do nosso header, colocamos  a classe como "header-content " e
+ colocamos a classe container "header-content container", que até então 
+ não existia até a gente criar agora. 
+
+ Ela vai ficar responsável em onde a gente usar ela, pra alinhar o
+ conteúdo.
+
+
+*/
+
+
+.container {
+    max-width: 1440px;
+    margin:0px auto;
+    padding: 0 8px;
+}
+
+// agora  em 1440px ele mantem centrlizando independente do tamanho, ele mantem 
+//o site centralizado, pois coloquei na margin da direita e da esquerda como auto e a máxima largura que
+//que ele vai chegar é de 1440px, se for menor ele continua comportando responsível, se for maior ele vai comportar
+//nesse máximo
+
+
+/*Agora precisamos desenvolver o bg-homer, porque é a onde que vai manter a nossa imagem de fundo*/
+
+.bg-home {
+    position: relative;
+}
+
+.bg-home::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background-image: linear-gradient(to bottom, rgba(6,18,30,0.1), #06121e), url("../assets/bg.svg");
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index:-1;
+    background-size:cover ;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+}
+
+//_---------------------------------------
+
+// HERO----------
+
+.hero {
+    color:$white-normal;
+    min-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+
+    h1 {
+        text-align: center;
+        line-height: 150%;
+        max-width: 940px;
+        font-size: 48px;
+    }
+
+    p {
+        text-align: center;
+        margin: 14px 0px;
+    }
+
+    .button-contact {
+        padding: 14px 28px;
+        color:$white-normal;
+        background-color: $red-normal;
+        border: 0;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 14px 0px;
+    }
+}
+
+.button-contact:hover {
+    animation: scaleButton 0.8s alternate infinite;
+}
+
+@keyframes scaleButton {
+    from {
+        transform: scale(1);
+    }
+    to{
+        transform: scale(1.07);
+    }
+}
+
+@media screen and (max-width:768px) {
+    .hero {
+        min-height: 60vh;
+
+        h1 {
+            font-size: 34px;
+            padding: 0 14px;
+            width: 100%;
+        }
+
+        p {
+            font-size:14px;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero h1 {
+        font-size:24px;
+    }
+
+}
+
+//---------------------
+
+//about -------------
+
+
+.about {
+    background-color: $primary-normal;
+    overflow: hidden;
+    color: $white-normal;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 34px 14px 64px 14px;
+    
+    img {
+        max-width: 570px;
+    }
+}
+
+.about-content div {
+    flex: 1;
+}
+
+.about-description {
+    h2 {
+        font-size: 38px;
+        margin-bottom: 24px;
+    }
+
+    p {
+        margin-bottom: 14px;
+        line-height: 150%;
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    .about-content {
+        display:flex;
+        flex-direction:column;
+    }
+}
+
+// ---------------------
+
+//SERVICES
+
+
+.services {
+    background: $white-normal;
+    color: $black-normal;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 54px 14px;
+}
+
+.services-content h2{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 14px;
+}
+
+.services-content p {
+    line-height: 150%;
+    margin-bottom: 14px;
+    text-align: center;
+    max-width: 780px;
+}
+
+.haircuts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:16px;
+    padding: 0 44px 34px 44px;
+}
+
+.haircut {
+    flex: 1;
+    // com o flex 1, ou seja, to falando pra cada item,
+    //cada div, ocupart um tamanho igual na tela, vão tentar 
+    //se encaixar lá, sem que eu tenha que passar largura de cada
+    //item, o flexbox vai fazer isso
+    display: flex;
+    flex-direction: column;
+    background-color: $white-normal;
+    border-radius: 8px;
+    box-shadow: 0px -1px 17px -4px rgba(0, 0, 0, 0.5);
+
+    overflow: hidden;
+    //escodendo a ponta, ent tdo que passar
+    //fora no caso a ponta da imagem,esconda, ai fica a impressão de arredondado
+
+    img {
+        width: 100%;
+        max-width: 354px;
+        transition: transform 0.2s;
+    }
+}
+
+
+.haircut img:hover {
+    transform:scale(1.2);
+    z-index: 1;
+}
+
+.haircut-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 14px;
+    background-color: $white-normal;
+    z-index:99;
+}
+
+.haircut-info button {
+    margin-right: 30px;
+}
+
+.haircut-info button {
+    color:$white-normal;
+    background-color: $red-normal;
+    padding: 4px 8px ;
+    border-radius: 4px;
+    border: 0;
+    cursor: default;
+}
+
+@media screen and (max-width:768px) {
+    .haircuts {
+        flex-direction:column;
+    }
+
+    .haircuts img {
+        max-width: 740px;
+    }
+}
+
+// --------------------
+
+//footer
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 54px 0px;
+    gap:24px;
+    color:$white-normal;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 8px;
+    color:$white-normal;
+}
+
+//-------------------
+
+.btn-whatsapp {
+
+    position: fixed;
+    bottom: 14px;
+    right:24px;
+    z-index:99;
+    img {
+        max-width: 74px;
+        transition: transform 0.4s;
+    }
+
+    img:hover {
+        transform: scale(1.1);
+    }
+}
+
+.btn-whatsapp .tooltip-text{
+    visibility: hidden;
+    position: absolute;
+    width: 120px;
+    top:8px;
+    left: -144px;
+    background-color: $black-normal;
+    color:$white-normal;
+    padding: 6px;
+    border-radius: 8px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.btn-whatsapp:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media screen and (max-width:768px){
+    .btn-whatsapp {
+        img {
+            max-width: 64px;
+        }
+    }
+}

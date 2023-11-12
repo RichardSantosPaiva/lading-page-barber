@@ -1,0 +1,446 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+  outline: 0;
+}
+
+/*
+@impot "partials/colors";
+*/
+/* Importamos um arquivo de SAAS(colors),  importamos dentro do nosso style.scss,
+ essa é uma funcionalidade que o css puro não tem, que temos dentro de SAAS
+. Agora que importei eu posso usar, quero que o background landing page seja dessa cor
+primary, que a minha váriavel chamando ela no background-color
+
+ */
+header {
+  width: 100%;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+i {
+  color: #FFF;
+}
+
+.header-icons {
+  display: flex;
+  gap: 14px;
+}
+
+.header-icons a:hover i {
+  animation: translateY 0.8s infinite alternate;
+  color: #d34040;
+}
+@keyframes translateY {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-8px) scale(1.1);
+  }
+}
+
+.header-button {
+  border: 1px solid #FFF;
+  padding: 8px 24px;
+  border-radius: 4px;
+  color: #FFF;
+  background-color: transparent;
+  transition: background-color 0.8s;
+  /*Olha como aproveita mto o nosso código, pois não estamos escrevendo
+  a nossa cor de novo, estamos pegando a cor que está dentro do arquivo
+  de váriavel e estamos utilizando ela. Qualquer mudança de cor, como
+  mudar a cor para cinza, fica muito mais facíl */
+}
+
+.header-button:hover {
+  border: 1px solid #d34040;
+  background-color: #d34040;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+/*
+usar a varáivel é muito aproveitavel, olha como reaproveitamos
+muito os nossos códigos pois não estamos escrevemos as cores denovo, apenas as
+estamos pegano as cores que está lá dentro do arquivo de váriavel e utilizando
+ela. "Se o cara pede pra que muda a cor dos icones, ou de todos os textos não 
+vamos usar a cor branca, a cor branca não vai existir mais nas coisas. Ai
+a gente vai lá onde tá o branco e muda a cor pra cinza no arquivo de cores, ai
+que elaterar e salvar já sofre alteracao, facilita mto o nosso projeto.
+*/
+/*
+Criamos o header por enquanto não alinhou, pois estamos trabalhando no header e não
+no alinhamento do layout.
+
+no mobile o header não fica legal, vamos colocar break points, ou seja responsividade
+. eu quero que no tamanho expecifico de tela ele se comporte diferente
+
+pesquisa: https://www.treinaweb.com.br/blog/media-queries-o-que-sao-e-como-usar-no-css
+
+"screen: Para monitores ou outros dispositivos como computadores, tablets e smartphones com telas coloridas e com resolução adequada;"
+
+Ou seja, quando tiver num largura máxima de 768 px ele vai aplciar o que tiver aqui dentro
+*/
+@media screen and (max-width: 768px) {
+  .header-content {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-content i {
+    margin-top: 16px;
+    font-size: 34px;
+  }
+  .header-logo img {
+    width: 160px;
+    margin-top: 46px;
+  }
+  .header-button {
+    display: none;
+  }
+}
+/*
+criado esse arquivo depois de terminar o header
+
+precisamos controlar o bg-homer, pois não temos a 
+imagem de fundo, e toda vez que vamos aumentando, o nosso 
+layout não tem um tamanho máximo. E o caso do layout no
+figma, quero que sempre tenha  um tamanho máximo de 1440px
+ou um tamanho que caso passe disso, ele só vai alinhar o conteúdo
+dentro
+
+Por enquanto ele ta seguindo grudado, na esquerda e na direita,
+independente do tamanho de tela do usuario.
+
+ao abrir o inspecionar, com ele aberto e minimizo, ai quando eu
+mexer posso ver o tamanho da página. Qnd eu tiver 1440px, posso
+alinhar, quando passar disso eu quero que fique alinhado o conteudo
+ e não que ele fique grudado na esquerda e na direta (menu e botão).
+ Como fazer isso?
+
+ Pra isso, criamos um .container, que vai ser um container apenas
+ de alinhamento aqui dentro no nosso layout. Vou dizer que no máximo
+ a nossa largura vai ter 1140 pixel de largura e que ele vai ter uma
+ margin 0 emcima e baixo e auto nas laterais. Pra sempre ter uma 
+ alinhamento centralizado
+
+ lembrando: no nosso nav, no index.html. Que tem toda uma navegação 
+ dentro do nosso header, colocamos  a classe como "header-content " e
+ colocamos a classe container "header-content container", que até então 
+ não existia até a gente criar agora. 
+
+ Ela vai ficar responsável em onde a gente usar ela, pra alinhar o
+ conteúdo.
+
+
+*/
+.container {
+  max-width: 1440px;
+  margin: 0px auto;
+  padding: 0 8px;
+}
+
+/*Agora precisamos desenvolver o bg-homer, porque é a onde que vai manter a nossa imagem de fundo*/
+.bg-home {
+  position: relative;
+}
+
+.bg-home::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background-image: linear-gradient(to bottom, rgba(6, 18, 30, 0.1), #06121e), url("../assets/bg.svg");
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+}
+
+.hero {
+  color: #FFF;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+}
+.hero h1 {
+  text-align: center;
+  line-height: 150%;
+  max-width: 940px;
+  font-size: 48px;
+}
+.hero p {
+  text-align: center;
+  margin: 14px 0px;
+}
+.hero .button-contact {
+  padding: 14px 28px;
+  color: #FFF;
+  background-color: #D94140;
+  border: 0;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 14px 0px;
+}
+
+.button-contact:hover {
+  animation: scaleButton 0.8s alternate infinite;
+}
+
+@keyframes scaleButton {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.07);
+  }
+}
+@media screen and (max-width: 768px) {
+  .hero {
+    min-height: 60vh;
+  }
+  .hero h1 {
+    font-size: 34px;
+    padding: 0 14px;
+    width: 100%;
+  }
+  .hero p {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .hero h1 {
+    font-size: 24px;
+  }
+}
+.about {
+  background-color: #06121E;
+  overflow: hidden;
+  color: #FFF;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 34px 14px 64px 14px;
+}
+.about-content img {
+  max-width: 570px;
+}
+
+.about-content div {
+  flex: 1;
+}
+
+.about-description h2 {
+  font-size: 38px;
+  margin-bottom: 24px;
+}
+.about-description p {
+  margin-bottom: 14px;
+  line-height: 150%;
+}
+
+@media screen and (max-width: 768px) {
+  .about-content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.services {
+  background: #FFF;
+  color: #232224;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 54px 14px;
+}
+
+.services-content h2 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 14px;
+}
+
+.services-content p {
+  line-height: 150%;
+  margin-bottom: 14px;
+  text-align: center;
+  max-width: 780px;
+}
+
+.haircuts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 0 44px 34px 44px;
+}
+
+.haircut {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFF;
+  border-radius: 8px;
+  box-shadow: 0px -1px 17px -4px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+.haircut img {
+  width: 100%;
+  max-width: 354px;
+  transition: transform 0.2s;
+}
+
+.haircut img:hover {
+  transform: scale(1.2);
+  z-index: 1;
+}
+
+.haircut-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px;
+  background-color: #FFF;
+  z-index: 99;
+}
+
+.haircut-info button {
+  margin-right: 30px;
+}
+
+.haircut-info button {
+  color: #FFF;
+  background-color: #D94140;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 0;
+  cursor: default;
+}
+
+@media screen and (max-width: 768px) {
+  .haircuts {
+    flex-direction: column;
+  }
+  .haircuts img {
+    max-width: 740px;
+  }
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 54px 0px;
+  gap: 24px;
+  color: #FFF;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 8px;
+  color: #FFF;
+}
+
+.btn-whatsapp {
+  position: fixed;
+  bottom: 14px;
+  right: 24px;
+  z-index: 99;
+}
+.btn-whatsapp img {
+  max-width: 74px;
+  transition: transform 0.4s;
+}
+.btn-whatsapp img:hover {
+  transform: scale(1.1);
+}
+
+.btn-whatsapp .tooltip-text {
+  visibility: hidden;
+  position: absolute;
+  width: 120px;
+  top: 8px;
+  left: -144px;
+  background-color: #232224;
+  color: #FFF;
+  padding: 6px;
+  border-radius: 8px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-whatsapp:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .btn-whatsapp img {
+    max-width: 64px;
+  }
+}
+body {
+  font-family: "sora", sans-serif;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-color: #06121E;
+}
+
+button {
+  font-family: "sora", sans-serif;
+  cursor: pointer;
+}
+
+svg {
+  width: 100%;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/*Ao olhar no figma dentro dela temos as cores que vamos usar, e algumas cores vamos repetir
+no background, no fundo do sobre que é a mesma coisa. A gente vai ter que ficar toda hora olhando 
+, e colando o mesmo hexadecimal, não faz sentido criar uma váriavel pra isso? Então vamos
+cadastar as cores do nosso projeto no nosso arquivo de estilo, aqui já começa ter uma difença no 
+nosso saas, ao inves de criar um arquivo saas grande, vamos repatir ele em algumas partes que vamos
+separar, como um componente. Uma parte do css só header, uma para o body, outra para a cor.
+
+Não esqueca de deixar o cmd do watch scss rodando. Vou criar um nova pasta chamada chamada de partials
+criar um arquivo chamado _colors.scss, um css só pra registrar as cores do projeot em váriaveis
+
+
+*//*# sourceMappingURL=style.css.map */

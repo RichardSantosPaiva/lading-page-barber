@@ -1,0 +1,117 @@
+header {
+    width: 100%;
+}
+
+.header-content {
+    display:flex ;
+    align-items: center;
+    justify-content: space-between;
+}
+
+i {
+    color: $white-normal;
+}
+
+.header-icons {
+    display: flex;
+    gap: 14px;
+}
+
+.header-icons a:hover {
+    i {
+        animation: translateY 0.8s infinite alternate;
+        color: $red-light;
+    }
+
+    @keyframes translateY {
+
+        from{
+            transform: translateY(0) scale(1);
+        }
+        to {
+            transform: translateY(-8px) scale(1.1);
+        }
+        
+    }
+}
+
+.header-button {
+    border: 1px solid $white-normal;
+    padding:8px 24px;
+    border-radius:4px ;
+    color: $white-normal;
+    background-color: transparent;
+    transition: background-color 0.8s;
+    
+    /*Olha como aproveita mto o nosso código, pois não estamos escrevendo
+    a nossa cor de novo, estamos pegando a cor que está dentro do arquivo
+    de váriavel e estamos utilizando ela. Qualquer mudança de cor, como
+    mudar a cor para cinza, fica muito mais facíl */
+
+    // ttá mto seco, ent posso colcoar uma transition com background color do hover e o segundos
+}
+
+.header-button:hover {
+    border: 1px solid $red-light;
+    background-color: $red-light;
+    // ttá mto seco, podemos  colcoar o que chamamos de transition
+    // quando ele ter um hover ele vai demorar ele vai ter uma transição
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:14px ;
+}
+
+/*
+usar a varáivel é muito aproveitavel, olha como reaproveitamos
+muito os nossos códigos pois não estamos escrevemos as cores denovo, apenas as
+estamos pegano as cores que está lá dentro do arquivo de váriavel e utilizando
+ela. "Se o cara pede pra que muda a cor dos icones, ou de todos os textos não 
+vamos usar a cor branca, a cor branca não vai existir mais nas coisas. Ai
+a gente vai lá onde tá o branco e muda a cor pra cinza no arquivo de cores, ai
+que elaterar e salvar já sofre alteracao, facilita mto o nosso projeto.
+*/
+
+
+/*
+Criamos o header por enquanto não alinhou, pois estamos trabalhando no header e não
+no alinhamento do layout.
+
+no mobile o header não fica legal, vamos colocar break points, ou seja responsividade
+. eu quero que no tamanho expecifico de tela ele se comporte diferente
+
+pesquisa: https://www.treinaweb.com.br/blog/media-queries-o-que-sao-e-como-usar-no-css
+
+"screen: Para monitores ou outros dispositivos como computadores, tablets e smartphones com telas coloridas e com resolução adequada;"
+
+Ou seja, quando tiver num largura máxima de 768 px ele vai aplciar o que tiver aqui dentro
+*/
+@media screen and (max-width: 768px) {
+
+    .header-content {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        i {
+            margin-top:16px ;
+            font-size:34px;
+        }
+    }
+    .header-logo img {
+        width:160px;
+        margin-top:46px;
+    }
+
+    .header-button {
+        display: none;
+   
+        // display none, com ele eu fiz que quando
+        // for mobline ele não exista mais, apenas 
+        // no desktop ou no tablet
+    }
+}

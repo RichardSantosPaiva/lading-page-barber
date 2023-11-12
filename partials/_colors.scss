@@ -1,0 +1,30 @@
+$primary-normal: #06121E;
+$primary-dark: #0f40f1;
+$primary-ligth: #0c2135;
+
+
+$secondary-normal: #090d11;
+$secondary-dark: #06090c;
+$secondary-ligth:#1a1f25;
+
+$black-normal:#232224;
+$black-dark: #161617;
+$black-ligth: #353436;
+
+$white-normal: #FFF;
+$white-dark: #edeaef;
+$white-ligth:#d94140;
+
+$red-normal:#D94140;
+$red-dark: #b42b2b;
+$red-light:#d34040;
+
+// criamos as variáveis para as nossas cores que vamos usar, 
+//td que vez que vamos usar podemos usar as nossas varáveis
+//so que criamos num arquivo separado. como usar ela ? Então eu salvo
+//o arquivo. como estamos usando Saas, é so importar ela dentro do style.scss.
+//em cima do body escrevo:
+
+/*
+@impot "partials/colors";
+*/
